@@ -141,6 +141,7 @@
   .nav{display:flex;align-items:center;justify-content:space-between;padding:0 24px}
   @media(min-width:1024px){.nav{padding:0 48px}}
   .nav-logo{display:flex;align-items:center;gap:12px}
+  .logo-svg{height:30px;width:auto;display:block}
   .logo-circle{width:46px;height:46px;border-radius:9999px;display:grid;place-items:center}
   .logo-circle span{font-family:'Instrument Serif',serif;font-style:italic;font-size:24px;color:var(--orange);line-height:1}
   .logo-word{font-family:'Instrument Serif',serif;font-style:italic;font-size:20px;color:var(--ink)}
@@ -168,7 +169,27 @@
   .sec-bg img{width:100%;height:100%;object-fit:cover;object-position:center}
   .sec-bg::after{content:"";position:absolute;inset:0;}
   .hero .sec-bg::after{background:linear-gradient(180deg,rgba(255,255,255,.68) 0%,rgba(255,255,255,.30) 36%,rgba(255,255,255,.42) 72%,#fff 100%)}
-  .capabilities .sec-bg::after{background:linear-gradient(180deg,#fff 0%,rgba(255,255,255,.5) 22%,rgba(255,255,255,.45) 55%,rgba(255,255,255,.82) 100%)}
+  .capabilities .sec-bg{background:var(--bg2);display:flex;align-items:center;justify-content:center}
+  .capabilities .sec-bg::after{background:linear-gradient(180deg,rgba(244,245,246,.25) 0%,rgba(244,245,246,0) 38%,rgba(244,245,246,.55) 100%)}
+  .bg-logo{width:min(80%,860px);height:auto;display:block}
+
+  /* Dienstleistungen-Kacheln (Schnellüberblick) */
+  .svc-tiles{display:grid;grid-template-columns:1fr;gap:14px;margin-top:44px}
+  @media(min-width:560px){.svc-tiles{grid-template-columns:1fr 1fr}}
+  @media(min-width:1024px){.svc-tiles{grid-template-columns:repeat(4,1fr)}}
+  .svc-tile{border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:12px;transition:transform .3s;color:var(--ink)}
+  .svc-tile:hover{transform:translateY(-4px)}
+  .svc-tile .ti{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;flex:0 0 auto}
+  .svc-tile .ti svg{width:22px;height:22px;fill:none;stroke:var(--orange);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .svc-tile h3{font-family:'Instrument Serif',serif;font-style:italic;font-size:1.3rem;letter-spacing:-.5px}
+  .svc-tile p{font-size:13px;color:var(--grey);font-weight:300;line-height:1.45}
+  .svc-tile-cta{background:var(--orange);color:#fff}
+  .svc-tile-cta h3{color:#fff}
+  .svc-tile-cta p{color:rgba(255,255,255,.92)}
+  .svc-tile-cta .ti{background:rgba(255,255,255,.18)}
+  .svc-tile-cta .ti svg{stroke:#fff}
+
+  @media(prefers-reduced-motion:reduce){.blurtext .w{animation:none;opacity:1}}
 
   /* ===== HERO ===== */
   .hero-inner{position:relative;z-index:10;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 20px 30px}
@@ -252,6 +273,9 @@
   .person .role{color:var(--orange);font-weight:500;font-size:12px;margin:6px 0 12px;letter-spacing:.05em;text-transform:uppercase}
   .person .qual{color:var(--grey);font-size:14px;font-weight:300}
   .person a.mail{display:inline-block;margin-top:16px;color:var(--ink);font-size:14px;border-bottom:1px solid var(--orange);padding-bottom:2px}
+  .person-li{display:inline-flex;align-items:center;gap:7px;margin-top:16px;font-size:13px;font-weight:400;color:var(--ink);border-radius:9999px;padding:7px 14px;transition:transform .2s}
+  .person-li:hover{transform:translateY(-2px)}
+  .person-li svg{width:15px;height:15px;color:#0a66c2}
 
   /* CTA band */
   .cta-band{border-radius:26px;padding:52px 48px;display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap;position:relative;overflow:hidden;background:linear-gradient(120deg,var(--orange),var(--orange-dark));color:#fff;box-shadow:0 24px 70px rgba(243,111,33,.28)}
@@ -298,9 +322,12 @@
 <!-- ===== NAV ===== -->
 <header>
   <nav class="nav">
-    <a href="#start" class="nav-logo" aria-label="Aare Elektro Solothurn">
-      <span class="logo-circle liquid-glass"><span>a</span></span>
-      <span class="logo-word">Aare Elektro</span>
+    <a href="#start" class="nav-logo liquid-glass" style="border-radius:9999px;padding:8px 16px" aria-label="Aare Elektro Solothurn">
+      <svg class="logo-svg" viewBox="0 0 268 66" xmlns="http://www.w3.org/2000/svg" role="img">
+        <path d="M44 2 L12 40 H29 L18 64 L54 24 H37 Z" fill="#F08000"/>
+        <text x="66" y="33" font-family="Barlow,Inter,Arial,sans-serif" font-weight="700" font-size="27" letter-spacing="0.5"><tspan fill="#15181D">AARE </tspan><tspan fill="#F08000">ELEKTRO</tspan></text>
+        <text x="67" y="54" font-family="Barlow,Inter,Arial,sans-serif" font-weight="600" font-size="12" letter-spacing="7.5" fill="#15181D">SOLOTHURN</text>
+      </svg>
     </a>
     <div class="nav-center liquid-glass">
       <a class="lnk" href="#start">Start</a>
@@ -333,7 +360,7 @@
 <main>
 <!-- ===== SECTION 1: HERO (Teamfoto) ===== -->
 <section class="fullsec hero" id="start">
-  <div class="sec-bg"><img src="images/hero-team.png" alt="Team der Aare Elektro Solothurn AG mit Servicefahrzeugen in der Altstadt Solothurn"></div>
+  <div class="sec-bg"><img src="images/hero-team.png" fetchpriority="high" alt="Team der Aare Elektro Solothurn AG mit Servicefahrzeugen in der Altstadt von Solothurn"></div>
   <div class="hero-inner">
     <span class="hero-eyebrow reveal">Elektriker Solothurn</span>
     <h1 class="font-heading">
@@ -362,9 +389,68 @@
   </div>
 </section>
 
-<!-- ===== SECTION 2: DIENSTLEISTUNGEN (Panorama) ===== -->
-<section class="fullsec capabilities" id="leistungen">
-  <div class="sec-bg"><img src="images/panorama-solothurn.png" alt="Panorama der Altstadt Solothurn an der Aare"></div>
+<!-- ===== DIENSTLEISTUNGEN AUF EINEN BLICK ===== -->
+<section class="block" id="leistungen">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="badge-row"><span class="br-num">★</span><span class="br-label liquid-glass">Auf einen Blick</span></div>
+      <h2 class="h-section">Das bieten wir für <span class="hl">Sie</span>.</h2>
+      <p class="sec-lead">Ihr Elektriker in Biberist und der Region Solothurn – von der Installation über Service und Planung bis zu Gebäudeinformatik und Beleuchtung.</p>
+    </div>
+    <div class="svc-tiles">
+      <a class="svc-tile liquid-glass reveal" href="dienstleistungen.html#elektroinstallationen">
+        <span class="ti liquid-glass"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></span>
+        <h3>Elektroinstallationen</h3>
+        <p>Neubau, Umbau & Sanierung – sauber, sicher und normgerecht.</p>
+      </a>
+      <a class="svc-tile liquid-glass reveal d1" href="dienstleistungen.html#service">
+        <span class="ti liquid-glass"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
+        <h3>Service & Kundendienst</h3>
+        <p>Rasche Hilfe bei Störungen, Mängeln und Reparaturen vor Ort.</p>
+      </a>
+      <a class="svc-tile liquid-glass reveal d2" href="dienstleistungen.html#planung">
+        <span class="ti liquid-glass"><svg viewBox="0 0 24 24"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0z"/><path d="M14.5 12.5 12 15M10.5 8.5 8 11M6.5 4.5 4 7"/></svg></span>
+        <h3>Planung & Beratung</h3>
+        <p>Fachplanung aller Teilgebiete – Sie haben nur einen Ansprechpartner.</p>
+      </a>
+      <a class="svc-tile liquid-glass reveal d3" href="dienstleistungen.html#it">
+        <span class="ti liquid-glass"><svg viewBox="0 0 24 24"><path d="M9 17H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4"/><path d="M12 17v4M8 21h8"/></svg></span>
+        <h3>Gebäudeinformatik</h3>
+        <p>Netzwerke, KNX, WLAN, Telefonie und Smart-Home-Lösungen.</p>
+      </a>
+      <a class="svc-tile liquid-glass reveal" href="dienstleistungen.html#planung">
+        <span class="ti liquid-glass"><svg viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.8.8 1.3 1.5 1.5 2.5"/><path d="M9 18h6M10 22h4"/></svg></span>
+        <h3>Beleuchtung</h3>
+        <p>Stimmige Lichtkonzepte und Energiesparlösungen für jeden Raum.</p>
+      </a>
+      <a class="svc-tile liquid-glass reveal d1" href="dienstleistungen.html#elektroinstallationen">
+        <span class="ti liquid-glass"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/><path d="M9 7h.01M15 7h.01M9 11h.01M15 11h.01M9 15h.01M15 15h.01"/></svg></span>
+        <h3>Um- & Neubau / Hallen</h3>
+        <p>Komplette Elektroprojekte für Wohnen, Gewerbe und Industrie.</p>
+      </a>
+      <a class="svc-tile liquid-glass reveal d2" href="dienstleistungen.html#service">
+        <span class="ti liquid-glass"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><path d="M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2M9 14l2 2 4-4"/></svg></span>
+        <h3>Gewerbeunterhalt</h3>
+        <p>Regelmässiger Unterhalt von Liegenschaften – alles störungsfrei.</p>
+      </a>
+      <a class="svc-tile svc-tile-cta reveal d3" href="dienstleistungen.html">
+        <span class="ti"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        <h3>Alle Dienstleistungen</h3>
+        <p>Zur vollständigen Übersicht mit allen Details.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION: DIENSTLEISTUNGEN (Logo-Hintergrund) ===== -->
+<section class="fullsec capabilities" id="angebot">
+  <div class="sec-bg">
+    <svg class="bg-logo" viewBox="0 0 268 66" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Aare Elektro Solothurn Logo">
+      <path d="M44 2 L12 40 H29 L18 64 L54 24 H37 Z" fill="#F08000"/>
+      <text x="66" y="33" font-family="Barlow,Inter,Arial,sans-serif" font-weight="700" font-size="27" letter-spacing="0.5"><tspan fill="#15181D">AARE </tspan><tspan fill="#F08000">ELEKTRO</tspan></text>
+      <text x="67" y="54" font-family="Barlow,Inter,Arial,sans-serif" font-weight="600" font-size="12" letter-spacing="7.5" fill="#15181D">SOLOTHURN</text>
+    </svg>
+  </div>
   <div class="cap-inner">
     <div style="margin-bottom:auto">
       <div class="cap-kicker reveal">// Dienstleistungen</div>
@@ -417,15 +503,15 @@
     </div>
     <div class="cards">
       <a class="card liquid-glass reveal" href="dienstleistungen.html#planung">
-        <div class="cimg"><img src="https://static.wixstatic.com/media/4b0beb_2efa05cf611a40fa8bac06f5f17c428f~mv2.jpg/v1/fill/w_500,h_400,al_c,q_85,enc_avif,quality_auto/Imagebilder_Aareelektro_2022_Location_179.jpg" alt="Beleuchtung und Lichtplanung Solothurn"></div>
+        <div class="cimg"><img loading="lazy" decoding="async" src="https://static.wixstatic.com/media/4b0beb_2efa05cf611a40fa8bac06f5f17c428f~mv2.jpg/v1/fill/w_500,h_400,al_c,q_85,enc_avif,quality_auto/Imagebilder_Aareelektro_2022_Location_179.jpg" alt="Beleuchtung und Lichtplanung Solothurn"></div>
         <div class="cbody"><h3>Beleuchtung & Planung</h3><p>Stimmige Lichtkonzepte und kompetente Beratung für jedes Raumgefühl.</p><span class="more">Mehr erfahren →</span></div>
       </a>
       <a class="card liquid-glass reveal d1" href="dienstleistungen.html#elektroinstallationen">
-        <div class="cimg"><img src="https://static.wixstatic.com/media/ebc23b_1466619c24694c03ae60ce152e221bbc~mv2.jpg/v1/fill/w_500,h_400,al_c,q_85,enc_avif,quality_auto/Imagebilder_Aareelektro_2022_Location_302.jpg" alt="Um- und Neubau sowie Hallenneubau Solothurn"></div>
+        <div class="cimg"><img loading="lazy" decoding="async" src="https://static.wixstatic.com/media/ebc23b_1466619c24694c03ae60ce152e221bbc~mv2.jpg/v1/fill/w_500,h_400,al_c,q_85,enc_avif,quality_auto/Imagebilder_Aareelektro_2022_Location_302.jpg" alt="Um- und Neubau sowie Hallenneubau Solothurn"></div>
         <div class="cbody"><h3>Um- & Neubau / Hallen</h3><p>Komplette Elektroprojekte für Wohn-, Gewerbe- und Industriebauten.</p><span class="more">Mehr erfahren →</span></div>
       </a>
       <a class="card liquid-glass reveal d2" href="dienstleistungen.html#service">
-        <div class="cimg"><img src="https://static.wixstatic.com/media/4b0beb_ef79f2d4f7124cb588dbff22b055e6fe~mv2.jpg/v1/fill/w_500,h_400,al_c,q_85,enc_avif,quality_auto/Imagebilder_Aareelektro_2022_Location_252.jpg" alt="Gewerbeunterhalt Liegenschaften Solothurn"></div>
+        <div class="cimg"><img loading="lazy" decoding="async" src="https://static.wixstatic.com/media/4b0beb_ef79f2d4f7124cb588dbff22b055e6fe~mv2.jpg/v1/fill/w_500,h_400,al_c,q_85,enc_avif,quality_auto/Imagebilder_Aareelektro_2022_Location_252.jpg" alt="Gewerbeunterhalt Liegenschaften Solothurn"></div>
         <div class="cbody"><h3>Gewerbeunterhalt</h3><p>Regelmässiger Unterhalt von Liegenschaften – damit alles störungsfrei läuft.</p><span class="more">Mehr erfahren →</span></div>
       </a>
     </div>
@@ -440,7 +526,7 @@
     </div>
     <div class="about-grid">
       <div class="about-media liquid-glass reveal">
-        <img src="https://static.wixstatic.com/media/ebc23b_48d5c220a24848a0b3f7d49d676cfc09~mv2.jpg/v1/fill/w_900,h_640,al_c,q_85,enc_avif,quality_auto/Imagebilder_Aareelektro_2022_Team_und_Portrait__083.jpg" alt="Das Team der Aare Elektro Solothurn AG">
+        <img loading="lazy" decoding="async" src="https://static.wixstatic.com/media/ebc23b_48d5c220a24848a0b3f7d49d676cfc09~mv2.jpg/v1/fill/w_900,h_640,al_c,q_85,enc_avif,quality_auto/Imagebilder_Aareelektro_2022_Team_und_Portrait__083.jpg" alt="Das Team der Aare Elektro Solothurn AG, Elektriker in Biberist und Solothurn">
       </div>
       <div class="reveal d1">
         <h2 class="h-section">Leidenschaft und Freude am Beruf.</h2>
@@ -465,18 +551,26 @@
     </div>
     <div class="team-grid">
       <div class="person liquid-glass reveal">
-        <img class="avatar-img" src="https://static.wixstatic.com/media/4b0beb_0edc64137e5e4ae0bb46de9bfd783c27~mv2.jpg/v1/crop/x_0,y_160,w_1992,h_2038/fill/w_320,h_320,al_c,q_85,enc_avif,quality_auto/portrait.jpg" alt="Daniel Hürlimann">
+        <img class="avatar-img" loading="lazy" decoding="async" src="https://static.wixstatic.com/media/4b0beb_0edc64137e5e4ae0bb46de9bfd783c27~mv2.jpg/v1/crop/x_0,y_160,w_1992,h_2038/fill/w_320,h_320,al_c,q_85,enc_avif,quality_auto/portrait.jpg" alt="Daniel Hürlimann">
         <h3>Daniel Hürlimann</h3>
         <div class="role">Geschäftsleitung · Projektleitung</div>
         <div class="qual">Eidg. dipl. Elektroinstallateur<br>Eidg. dipl. Betriebswirtschafter</div>
         <a class="mail" href="mailto:d.huerlimann@aare-elektro.ch">d.huerlimann@aare-elektro.ch</a>
+        <div><a class="person-li liquid-glass" href="https://www.linkedin.com/in/daniel-h%C3%BCrlimann-a01aa17a/" target="_blank" rel="noopener" aria-label="Daniel Hürlimann auf LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 18.34V10.4H5.67v7.94h2.67zM7 9.24a1.55 1.55 0 1 0 0-3.1 1.55 1.55 0 0 0 0 3.1zM18.34 18.34v-4.36c0-2.33-1.25-3.41-2.91-3.41-1.34 0-1.94.74-2.27 1.26v-1.08h-2.67c.04.75 0 7.94 0 7.94h2.67v-4.43c0-.24.02-.48.09-.65.19-.48.62-.97 1.35-.97.96 0 1.34.72 1.34 1.78v4.27h2.67z"/></svg>
+          LinkedIn-Profil
+        </a></div>
       </div>
       <div class="person liquid-glass reveal d1">
-        <img class="avatar-img" src="https://static.wixstatic.com/media/4b0beb_d86d758109ae4bcf8f60c3d243796bfd~mv2.jpg/v1/crop/x_36,y_58,w_1928,h_1998/fill/w_320,h_320,al_c,q_85,enc_avif,quality_auto/portrait.jpg" alt="Christoph Leu">
+        <img class="avatar-img" loading="lazy" decoding="async" src="https://static.wixstatic.com/media/4b0beb_d86d758109ae4bcf8f60c3d243796bfd~mv2.jpg/v1/crop/x_36,y_58,w_1928,h_1998/fill/w_320,h_320,al_c,q_85,enc_avif,quality_auto/portrait.jpg" alt="Christoph Leu">
         <h3>Christoph Leu</h3>
         <div class="role">Geschäftsleitung · Projektleitung</div>
         <div class="qual">Eidg. dipl. Elektroinstallateur</div>
         <a class="mail" href="mailto:c.leu@aare-elektro.ch">c.leu@aare-elektro.ch</a>
+        <div><a class="person-li liquid-glass" href="https://www.linkedin.com/in/christoph-leu-13569414b/" target="_blank" rel="noopener" aria-label="Christoph Leu auf LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 18.34V10.4H5.67v7.94h2.67zM7 9.24a1.55 1.55 0 1 0 0-3.1 1.55 1.55 0 0 0 0 3.1zM18.34 18.34v-4.36c0-2.33-1.25-3.41-2.91-3.41-1.34 0-1.94.74-2.27 1.26v-1.08h-2.67c.04.75 0 7.94 0 7.94h2.67v-4.43c0-.24.02-.48.09-.65.19-.48.62-.97 1.35-.97.96 0 1.34.72 1.34 1.78v4.27h2.67z"/></svg>
+          LinkedIn-Profil
+        </a></div>
       </div>
     </div>
   </div>
@@ -531,8 +625,11 @@
     <div class="foot-grid">
       <div>
         <a href="#start" class="nav-logo" aria-label="Aare Elektro Solothurn">
-          <span class="logo-circle liquid-glass"><span>a</span></span>
-          <span class="logo-word">Aare Elektro</span>
+          <svg class="logo-svg" style="height:40px" viewBox="0 0 268 66" xmlns="http://www.w3.org/2000/svg" role="img">
+            <path d="M44 2 L12 40 H29 L18 64 L54 24 H37 Z" fill="#F08000"/>
+            <text x="66" y="33" font-family="Barlow,Inter,Arial,sans-serif" font-weight="700" font-size="27" letter-spacing="0.5"><tspan fill="#15181D">AARE </tspan><tspan fill="#F08000">ELEKTRO</tspan></text>
+            <text x="67" y="54" font-family="Barlow,Inter,Arial,sans-serif" font-weight="600" font-size="12" letter-spacing="7.5" fill="#15181D">SOLOTHURN</text>
+          </svg>
         </a>
         <p>Ihr verlässlicher Elektropartner in der Region Solothurn – mit Leidenschaft und Freude am Beruf.</p>
         <div class="socials"><a href="https://www.facebook.com/Aareelektro" target="_blank" rel="noopener" class="liquid-glass" title="Facebook">f</a><a href="https://www.instagram.com/aareelektro/" target="_blank" rel="noopener" class="liquid-glass" title="Instagram">ig</a></div>
