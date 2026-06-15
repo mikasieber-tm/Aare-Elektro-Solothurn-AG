@@ -90,7 +90,7 @@
   html{scroll-behavior:smooth}
   body{
     font-family:'Barlow',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-    background:#ffffff;color:var(--ink);line-height:1.6;font-weight:700;
+    background:linear-gradient(180deg,#F26C1E 0%,#F47C2E 12%,#F6883F 24%,#F89A5C 37%,#FAAE78 50%,#FBC196 63%,#FCD3B2 75%,#FDE3CC 86%,#FEF2E8 94%,#ffffff 100%) no-repeat;color:var(--ink);line-height:1.6;font-weight:700;
     -webkit-font-smoothing:antialiased;overflow-x:hidden;
   }
   a{color:inherit;text-decoration:none}
@@ -169,11 +169,11 @@
   .sec-bg{position:absolute;inset:0;z-index:0}
   .sec-bg img{width:100%;height:100%;object-fit:cover;object-position:center}
   .sec-bg::after{content:"";position:absolute;inset:0;}
-  .hero .sec-bg{background:linear-gradient(180deg,#F47C2E 0%,#F47C2E 72%,#ffffff 100%)}
+  .hero .sec-bg{background:transparent}
   .hero .sec-bg::after{background:none}
-  .hero-logo{position:absolute;top:88px;right:20px;width:clamp(130px,30vw,200px);height:auto;z-index:2}
-  @media(min-width:1024px){.hero-logo{top:96px;right:48px;width:230px}}
-  .capabilities .sec-bg{background:linear-gradient(180deg,#F47C2E 0%,#F47C2E 80%,#ffffff 100%);display:flex;align-items:center;justify-content:center}
+  .hero-logo{position:absolute;top:88px;left:20px;width:clamp(220px,48vw,360px);height:auto;z-index:2}
+  @media(min-width:1024px){.hero-logo{top:104px;left:48px;width:430px}}
+  .capabilities .sec-bg{background:transparent;display:flex;align-items:center;justify-content:center}
   .capabilities .sec-bg::after{background:none}
   .bg-logo{width:min(80%,860px);height:auto;display:block}
 
@@ -226,8 +226,8 @@
   .cap-head{font-size:clamp(2.6rem,6vw,5.5rem);color:var(--ink);margin-bottom:8px}
   .capabilities .cap-kicker{color:rgba(255,255,255,.9)}
   .capabilities .cap-head{color:#fff}
-  #team .h-section{color:#fff}
-  #team .br-label{color:#fff}
+  #team .h-section{color:var(--ink)}
+  #team .br-label{color:var(--orange)}
   .cap-cards{display:grid;grid-template-columns:1fr;gap:22px;margin-top:54px}
   @media(min-width:768px){.cap-cards{grid-template-columns:repeat(3,1fr)}}
   .ccard{border-radius:20px;padding:24px;min-height:330px;display:flex;flex-direction:column;color:var(--ink)}
@@ -311,7 +311,7 @@
   form .btn{width:100%;justify-content:center;margin-top:22px;border:0}
 
   /* Footer */
-  footer{background:var(--bg2);padding:64px 0 30px;border-top:1px solid var(--line)}
+  footer{background:transparent;padding:64px 0 30px;border-top:1px solid var(--line)}
   .foot-grid{display:grid;grid-template-columns:1fr;gap:34px;padding-bottom:36px;border-bottom:1px solid var(--line)}
   @media(min-width:768px){.foot-grid{grid-template-columns:1.4fr 1fr 1fr;gap:40px}}
   footer .logo-word{font-size:24px}
@@ -332,13 +332,7 @@
 <!-- ===== NAV ===== -->
 <header>
   <nav class="nav">
-    <a href="#start" class="nav-logo liquid-glass" style="border-radius:9999px;padding:8px 16px" aria-label="Aare Elektro Solothurn">
-      <svg class="logo-svg" viewBox="0 0 268 66" xmlns="http://www.w3.org/2000/svg" role="img">
-        <path d="M44 2 L12 40 H29 L18 64 L54 24 H37 Z" fill="#F08000"/>
-        <text x="66" y="33" font-family="Barlow,Inter,Arial,sans-serif" font-weight="700" font-size="27" letter-spacing="0.5"><tspan fill="#15181D">AARE </tspan><tspan fill="#F08000">ELEKTRO</tspan></text>
-        <text x="67" y="54" font-family="Barlow,Inter,Arial,sans-serif" font-weight="600" font-size="12" letter-spacing="7.5" fill="#15181D">SOLOTHURN</text>
-      </svg>
-    </a>
+    <span class="nav-spacer"></span>
     <div class="nav-center liquid-glass">
       <a class="lnk" href="#start">Start</a>
       <a class="lnk" href="#leistungen">Dienstleistungen</a>
@@ -373,8 +367,8 @@
   <div class="sec-bg">
     <svg class="hero-logo" viewBox="0 0 268 66" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Aare Elektro Solothurn AG – Ihr Elektriker in Solothurn">
       <path d="M44 2 L12 40 H29 L18 64 L54 24 H37 Z" fill="#ffffff"/>
-      <text x="66" y="33" font-family="Barlow,Inter,Arial,sans-serif" font-weight="700" font-size="27" letter-spacing="0.5"><tspan fill="#ffffff">AARE </tspan><tspan fill="#ffffff">ELEKTRO</tspan></text>
-      <text x="67" y="54" font-family="Barlow,Inter,Arial,sans-serif" font-weight="600" font-size="12" letter-spacing="7.5" fill="#ffffff">SOLOTHURN</text>
+      <text x="66" y="33" font-family="Barlow,Inter,Arial,sans-serif" font-weight="700" font-size="27" letter-spacing="0.5"><tspan fill="#15181D">AARE </tspan><tspan fill="#15181D">ELEKTRO</tspan></text>
+      <text x="67" y="54" font-family="Barlow,Inter,Arial,sans-serif" font-weight="600" font-size="12" letter-spacing="7.5" fill="#15181D">SOLOTHURN</text>
     </svg>
   </div>
   <div class="hero-inner">
@@ -406,7 +400,7 @@
 </section>
 
 <!-- ===== DIENSTLEISTUNGEN AUF EINEN BLICK ===== -->
-<section class="block" id="leistungen" style="background:linear-gradient(180deg,#ffffff 0%,#ffffff 55%,#F47C2E 100%)">
+<section class="block" id="leistungen">
   <div class="wrap">
     <div class="reveal">
       <div class="badge-row"><span class="br-num">★</span><span class="br-label liquid-glass">Auf einen Blick</span></div>
@@ -505,7 +499,7 @@
 </section>
 
 <!-- ===== WEITERE LEISTUNGEN ===== -->
-<section class="block alt" style="background:#ffffff">
+<section class="block alt">
   <div class="wrap">
     <div class="reveal">
       <div class="badge-row"><span class="br-num">+</span><span class="br-label liquid-glass">Weitere Leistungen</span></div>
@@ -529,7 +523,7 @@
 </section>
 
 <!-- ===== ABOUT ===== -->
-<section class="block about" id="ueber" style="background:linear-gradient(180deg,#ffffff 0%,#ffffff 78%,#F47C2E 100%)">
+<section class="block about" id="ueber">
   <div class="wrap">
     <div class="reveal">
       <div class="badge-row"><span class="br-num">1</span><span class="br-label liquid-glass">Über uns</span></div>
@@ -553,7 +547,7 @@
 </section>
 
 <!-- ===== TEAM ===== -->
-<section class="block alt" id="team" style="background:linear-gradient(180deg,#F47C2E 0%,#F47C2E 80%,#ffffff 100%)">
+<section class="block alt" id="team">
   <div class="wrap">
     <div class="reveal" style="text-align:center;margin-bottom:50px">
       <div class="badge-row" style="justify-content:center"><span class="br-num">2</span><span class="br-label liquid-glass">Geschäftsleitung</span></div>
@@ -599,7 +593,7 @@
 </section>
 
 <!-- ===== CONTACT ===== -->
-<section class="block alt" id="kontakt" style="background:linear-gradient(180deg,#ffffff 0%,#FFF3EA 100%)">
+<section class="block alt" id="kontakt">
   <div class="wrap">
     <div class="reveal" style="margin-bottom:46px">
       <div class="badge-row"><span class="br-num">3</span><span class="br-label liquid-glass">Kontakt</span></div>
