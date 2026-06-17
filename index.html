@@ -154,7 +154,7 @@
   .menu-toggle{display:grid;place-items:center;width:46px;height:46px;border-radius:9999px;cursor:pointer}
   .menu-toggle svg{width:20px;height:20px;stroke:var(--ink);fill:none;stroke-width:2}
   @media(min-width:1024px){.nav-center{display:flex}.menu-toggle{display:none}.nav-spacer{display:block}}
-  @media(max-width:1023px){.nav-spacer{display:none}}
+  @media(max-width:1023px){.nav-spacer{display:none}.nav{justify-content:flex-end}}
 
   /* Mobile menu */
   .mmenu{position:fixed;inset:0;z-index:60;display:none}
@@ -205,19 +205,14 @@
   .svc-tile-cta .ti{background:rgba(255,255,255,.18)}
   .svc-tile-cta .ti svg{stroke:#fff}
 
-  /* "Das bieten wir für Sie" – grösser & auffälliger */
+  /* "Das bieten wir für Sie" – grosse Bild-Karten */
   #leistungen{padding:110px 0}
   #leistungen .h-section{font-size:clamp(2.6rem,6vw,4.6rem)}
   #leistungen .sec-lead{font-size:clamp(16px,1.6vw,19px);max-width:720px}
-  #leistungen .svc-tiles{gap:20px;margin-top:56px}
-  @media(min-width:760px){#leistungen .svc-tiles{grid-template-columns:1fr 1fr}}
-  @media(min-width:1040px){#leistungen .svc-tiles{grid-template-columns:repeat(3,1fr)}}
-  #leistungen .svc-tile{padding:32px 28px;border-radius:22px;gap:16px}
-  #leistungen .svc-tile:hover{transform:translateY(-6px)}
-  #leistungen .svc-tile .ti{width:58px;height:58px;border-radius:15px}
-  #leistungen .svc-tile .ti svg{width:30px;height:30px;stroke-width:1.7}
-  #leistungen .svc-tile h3{font-size:1.7rem}
-  #leistungen .svc-tile p{font-size:15px;line-height:1.5}
+  #leistungen .cards{gap:26px;margin-top:56px}
+  #leistungen .card .cbody{padding:24px 24px 28px}
+  #leistungen .card .cbody h3{font-size:1.7rem}
+  #leistungen .card .cbody p{font-size:15px;line-height:1.5}
 
   @media(prefers-reduced-motion:reduce){.blurtext .w{animation:none;opacity:1}}
 
@@ -394,6 +389,37 @@
   .socials a:hover{transform:translateY(-2px);color:var(--orange)}
   .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;font-size:13px;color:var(--grey);flex-wrap:wrap;gap:12px;font-weight:700}
   .foot-bottom a:hover{color:var(--orange)}
+
+  /* ===== Mobile-Feinschliff ===== */
+  html,body{overflow-x:hidden}
+  .h-section,.cap-head,.hero h1{overflow-wrap:break-word}
+  @media(max-width:560px){
+    .wrap{padding:0 18px}
+    section.block{padding:64px 0}
+    #leistungen{padding:70px 0}
+    #leistungen .h-section{font-size:clamp(1.9rem,7.5vw,2.5rem)}
+    .h-section{font-size:clamp(1.5rem,6vw,2.1rem)}
+    .sec-lead,#leistungen .sec-lead{font-size:15px}
+    /* Bankkarten: Label über Wert, Wert umbrechen */
+    .bank-card{padding:24px 20px}
+    .bank-card .row{flex-direction:column;align-items:flex-start;gap:3px;padding:9px 0}
+    .bank-card .v{text-align:left;overflow-wrap:anywhere}
+    /* Hero kompakter */
+    .hero-logo-badge img{width:min(78vw,260px)}
+    .hero-logo-badge{margin-bottom:30px}
+    .hero-inner{padding:120px 18px 48px}
+    .hero h1{font-size:clamp(2.1rem,9vw,2.9rem)}
+    .hero-cta{max-width:100%}
+    .hero-trust{font-size:12px;padding:9px 16px}
+    /* Kontakt-Formular: Felder stapeln */
+    form .frow{grid-template-columns:1fr}
+    /* Team-Mitarbeiterkarten: 2 Spalten ohne Überlauf */
+    .team-grid.staff{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+    .team-grid.staff .person{padding:18px 10px}
+    .team-grid.staff .person h3{font-size:1.15rem}
+    .team-grid.staff .avatar-ph{width:74px;height:74px}
+    .team-grid.staff .avatar-ph svg{width:40px;height:40px}
+  }
 </style>
 </head>
 <body>
@@ -481,46 +507,30 @@
       <h2 class="h-section">Das bieten wir für <span class="hl">Sie</span>.</h2>
       <p class="sec-lead">Ihr Elektriker in Biberist und der Region Solothurn – von der Installation über Service und Planung bis zu Gebäudeinformatik und Beleuchtung.</p>
     </div>
-    <div class="svc-tiles">
-      <a class="svc-tile liquid-glass reveal" href="elektroinstallationen.html">
-        <span class="ti liquid-glass"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></span>
-        <h3>Elektroinstallationen</h3>
-        <p>Neubau, Umbau & Sanierung – sauber, sicher und normgerecht.</p>
+    <div class="cards">
+      <a class="card liquid-glass reveal" href="elektroinstallationen.html">
+        <div class="cimg"><img loading="lazy" decoding="async" src="https://static.wixstatic.com/media/4b0beb_352fe0f9f32c4824aaf95b081dfff724~mv2.jpg/v1/fill/w_600,h_480,al_c,q_85,enc_avif,quality_auto/elektroinstallationen.jpg" alt="Elektroinstallationen durch Aare Elektro Solothurn"></div>
+        <div class="cbody"><h3>Elektroinstallationen</h3><p>Neubau, Umbau & Sanierung – sauber, sicher und normgerecht.</p><span class="more">Mehr erfahren →</span></div>
       </a>
-      <a class="svc-tile liquid-glass reveal d1" href="service.html">
-        <span class="ti liquid-glass"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
-        <h3>Service & Kundendienst</h3>
-        <p>Rasche Hilfe bei Störungen, Mängeln und Reparaturen vor Ort.</p>
+      <a class="card liquid-glass reveal d1" href="service.html">
+        <div class="cimg"><img loading="lazy" decoding="async" src="https://static.wixstatic.com/media/4b0beb_d7b259c842814f4f947338a91cefc11c~mv2.jpg/v1/fill/w_600,h_480,al_c,q_85,enc_avif,quality_auto/service.jpg" alt="Service und Kundendienst der Aare Elektro Solothurn"></div>
+        <div class="cbody"><h3>Service & Kundendienst</h3><p>Rasche Hilfe bei Störungen, Mängeln und Reparaturen vor Ort.</p><span class="more">Mehr erfahren →</span></div>
       </a>
-      <a class="svc-tile liquid-glass reveal d2" href="planung.html">
-        <span class="ti liquid-glass"><svg viewBox="0 0 24 24"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0z"/><path d="M14.5 12.5 12 15M10.5 8.5 8 11M6.5 4.5 4 7"/></svg></span>
-        <h3>Planung & Beratung</h3>
-        <p>Fachplanung aller Teilgebiete – Sie haben nur einen Ansprechpartner.</p>
+      <a class="card liquid-glass reveal d2" href="planung.html">
+        <div class="cimg"><img loading="lazy" decoding="async" src="https://static.wixstatic.com/media/ebc23b_1466619c24694c03ae60ce152e221bbc~mv2.jpg/v1/fill/w_600,h_480,al_c,q_85,enc_avif,quality_auto/planung.jpg" alt="Planung und Beratung Aare Elektro Solothurn"></div>
+        <div class="cbody"><h3>Planung & Beratung</h3><p>Fachplanung aller Teilgebiete – Sie haben nur einen Ansprechpartner.</p><span class="more">Mehr erfahren →</span></div>
       </a>
-      <a class="svc-tile liquid-glass reveal d3" href="it.html">
-        <span class="ti liquid-glass"><svg viewBox="0 0 24 24"><path d="M9 17H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4"/><path d="M12 17v4M8 21h8"/></svg></span>
-        <h3>Gebäudeinformatik</h3>
-        <p>Netzwerke, KNX, WLAN, Telefonie und Smart-Home-Lösungen.</p>
+      <a class="card liquid-glass reveal" href="it.html">
+        <div class="cimg"><img loading="lazy" decoding="async" src="https://static.wixstatic.com/media/4b0beb_5218b4f6b87b49759d63315512957236~mv2.jpg/v1/fill/w_600,h_480,al_c,q_85,enc_avif,quality_auto/it.jpg" alt="Computervernetzung und Gebäudeinformatik Solothurn"></div>
+        <div class="cbody"><h3>Gebäudeinformatik</h3><p>Netzwerke, KNX, WLAN, Telefonie und Smart-Home-Lösungen.</p><span class="more">Mehr erfahren →</span></div>
       </a>
-      <a class="svc-tile liquid-glass reveal" href="planung.html">
-        <span class="ti liquid-glass"><svg viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.8.8 1.3 1.5 1.5 2.5"/><path d="M9 18h6M10 22h4"/></svg></span>
-        <h3>Beleuchtung</h3>
-        <p>Stimmige Lichtkonzepte und Energiesparlösungen für jeden Raum.</p>
+      <a class="card liquid-glass reveal d1" href="planung.html">
+        <div class="cimg"><img loading="lazy" decoding="async" src="https://static.wixstatic.com/media/4b0beb_2efa05cf611a40fa8bac06f5f17c428f~mv2.jpg/v1/fill/w_600,h_480,al_c,q_85,enc_avif,quality_auto/beleuchtung.jpg" alt="Beleuchtung und Lichtplanung Solothurn"></div>
+        <div class="cbody"><h3>Beleuchtung</h3><p>Stimmige Lichtkonzepte und Energiesparlösungen für jeden Raum.</p><span class="more">Mehr erfahren →</span></div>
       </a>
-      <a class="svc-tile liquid-glass reveal d1" href="elektroinstallationen.html">
-        <span class="ti liquid-glass"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/><path d="M9 7h.01M15 7h.01M9 11h.01M15 11h.01M9 15h.01M15 15h.01"/></svg></span>
-        <h3>Um- & Neubau / Hallen</h3>
-        <p>Komplette Elektroprojekte für Wohnen, Gewerbe und Industrie.</p>
-      </a>
-      <a class="svc-tile liquid-glass reveal d2" href="service.html">
-        <span class="ti liquid-glass"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><path d="M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2M9 14l2 2 4-4"/></svg></span>
-        <h3>Gewerbeunterhalt</h3>
-        <p>Regelmässiger Unterhalt von Liegenschaften – alles störungsfrei.</p>
-      </a>
-      <a class="svc-tile svc-tile-cta reveal d3" href="dienstleistungen.html">
-        <span class="ti"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-        <h3>Alle Dienstleistungen</h3>
-        <p>Zur vollständigen Übersicht mit allen Details.</p>
+      <a class="card liquid-glass reveal d2" href="service.html">
+        <div class="cimg"><img loading="lazy" decoding="async" src="https://static.wixstatic.com/media/4b0beb_ef79f2d4f7124cb588dbff22b055e6fe~mv2.jpg/v1/fill/w_600,h_480,al_c,q_85,enc_avif,quality_auto/gewerbeunterhalt.jpg" alt="Gewerbeunterhalt von Liegenschaften Solothurn"></div>
+        <div class="cbody"><h3>Gewerbeunterhalt</h3><p>Regelmässiger Unterhalt von Liegenschaften – alles störungsfrei.</p><span class="more">Mehr erfahren →</span></div>
       </a>
     </div>
   </div>
